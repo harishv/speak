@@ -9,7 +9,7 @@ app.factory('speakglobalHomePageService', function ($http) {
 			//that resolves to whatever value is returned in it's
 			//callback argument, we can return that.
 			return $http.get('http://speakglobally.net/api/videos/count').then(function(result) {
-				return result.data.rows[0].value;
+				return result.data.rows;
 			});
 		},
 		getNoneFeaturedVideos: function (videosPerPage, skipValue) {
@@ -24,10 +24,9 @@ app.factory('speakglobalHomePageService', function ($http) {
 		},
 		getHomeVideo: function (){
 			return $http.get('http://speakglobally.net/api/videos/home_video').then(function (result){
-				// Get a random number from 15. Top 15 videos sorted in order.
-				var i = Math.floor((Math.random() * 15) + 1);
-				//console.log(JSON.stringify(result.data.rows[i]));
-				return result.data.rows[i];
+				// Pick a random number from 15 and get that video from Top 15 videos sorted in order.
+				var randVideoCount = Math.floor((Math.random() * 15) + 1);
+				return result.data.rows[randVideoCount];
 			});
 		}
 	};
@@ -43,15 +42,22 @@ app.controller('SpeakglobalHome', function ($scope, speakglobalHomePageService, 
 		return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
 	}
 
-	// Get the Video Count
+	// Get all Video's Count
 	$scope.videoCount = speakglobalHomePageService.getVideosCount();
-	$scope.numberOfPages = (Math.ceil($scope.videoCount/$scope.videosPerPage)).toString();
-	$scope.pages = [];
-	for(var i = 1; i <= $scope.numberOfPages; i++){
-		$scope.pages.push(i);
-	}
+	// Generate the numberOfPages and pages content based on the videoCount
+	$scope.$watch('videoCount', function(videoCountObj) {
+		if (videoCountObj !== undefined) {
+			// Sample Output: {"rows":[{"key":null,"value":650}]}
+			$scope.numberOfPages = (Math.ceil(videoCountObj[0].value/$scope.videosPerPage)).toString();
 
-	// var skipValue = 0;
+			$scope.pages = [];
+			for(var i = 1; i <= $scope.numberOfPages; i++){
+				$scope.pages.push(i);
+			}
+		}
+	});
+
+	// Get noneFeaturedVideos list based on the page(number) we are hitting from.
 	$scope.currentPageNumber = parseInt(getURLParameter('p'), 10);
 	if (isNaN($scope.currentPageNumber)) {
 		skipValue = 0;
@@ -59,13 +65,12 @@ app.controller('SpeakglobalHome', function ($scope, speakglobalHomePageService, 
 	} else {
 		skipValue = parseInt(($scope.currentPageNumber - 1) * $scope.videosPerPage, 10);
 	}
-
 	$scope.noneFeaturedVideos = speakglobalHomePageService.getNoneFeaturedVideos($scope.videosPerPage, skipValue);
 
-	// Latest Videos
+	// Get the top 5 Latest Videos List
 	$scope.latestVideos = speakglobalHomePageService.getLatestVideos();
 
-	// Set the hiro player playlist after getting the valid Video Object
+	// Set the homeVideoEmbedPath, homeVideoTitle, hiro player with the video playlist after getting the valid Video's Object
 	$scope.homeVideo = speakglobalHomePageService.getHomeVideo();
 	$scope.$watch('homeVideo', function(homeVideoObj) {
 		if (homeVideoObj !== undefined) {
