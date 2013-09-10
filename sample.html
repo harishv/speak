@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html ng-app="speakglobalApp">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Speak Globally</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<link href="css/jqtransform.css" rel="stylesheet" type="text/css" />
+	<script src="js/jquery-1.9.1.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/controllers-latest.js"></script>
+	<script src="js/video.js"></script>
+	<script src="js/jquery.jqtransform.js"></script>
+	<script src="js/jquery.ae.image.resize.min.js"></script>
+	<script src="js/vast.plugin.js"></script>
+	<script type="text/javascript">
+		$(function(){
+		  $('.checkbox').jqTransform({imgPath:'images/'});
+		});
+	</script>
+</head>
+
+<body ng-controller="SpeakglobalHome" ng-cloak>
+	<header>
+		<div class="container">
+			<span class="logo"><img src="/images/speak.png" /></span>
+		</div>
+	</header>
+	<!--Header End-->
+	<!-- Navigation Start -->
+	<div class="navgation">
+		<div class="container">
+			<nav>
+				<a href="/" class="active">Home</a> <span class="separator"></span>
+				<a href="/about">About Us</a> <span class="separator"></span>
+				<a href="/contact">Contact Us</a>
+			</nav>
+			<div class="navright">
+				<span class="small-icons">
+					<a href="https://www.facebook.com/speakglobally"><img src="/images/fb.png"/></a>
+					<a href="https://twitter.com/speakglobally"><img src="/images/twitter.png"/></a>
+					<a href="https://plus.google.com/115581027232449935001/posts"><img src="/images/google.png"/></a>
+				</span>
+			</div>
+		</div>
+	</div>
+	<!-- Navgation End-->
+	<article>
+		<div class="container">
+		   <div class="banner">
+				<!--Sizes=2 (width=728, height=90)-->
+				<script type="text/javascript" src="http://ads1.ministerial5.com/creative/2-002135402-00001j;size=2"></script>
+			</div>
+		<div class="contentarea">
+			<aside class="width65">
+				<div class="featured-videos">
+					<div class="featured-videos-title">FEATURED VIDEO</div>
+					<div class="featured-player-ad-container">
+						<div class="featured-videos-ad-area" id="featured-videos-ad-area" >
+							<div id='videoplayer' class='hiro'></div>
+						</div>
+						<div class="featured-videos-player-area" id="featured-videos-player-area" >
+						</div>
+					</div>
+					<div class="featured-videos-bt">
+						<div class="width65"><span class="video-description">{{homeVideoTitle}}</span><br />
+							<div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://speakglobally.net"></div>
+							<span class="width35" >
+								<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://speakglobally.net" data-text="Check this video" data-via="speakglobally">Tweet</a>
+								<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+							</span>
+
+						</div>
+						<!--Sizes=6 (width=234, height=60)-->
+						<div class="width35 right"><script type="text/javascript" src="http://ads1.ministerial5.com/creative/2-002135402-00001j;size=6"></script></div>
+					</div>
+					<div class="row">
+
+
+						<!-- <span class="right">Rate <img src="images/liles.png" class="margin20_L"/></span> -->
+					</div>
+					<div class="gallery-module">
+					   <div class="gallery-title"><span>More Videos</span></div>
+					   <div class="row" >
+						   <div class="gallery" ng-repeat="vid in noneFeaturedVideos">
+							<div class="videothumb"><a ng-href="/v/{{vid.value[0]}}">
+								<img class = "resizeme" height = "126px" width="190px" ng-src="http://876490ded624fedbbf8f-2529efbed00bf302a12a4cac23251cd4.r64.cf2.rackcdn.com/{{vid.value[2]}}" />
+								<div class = "video-overlay">
+									<span class="uploadedDate">{{ vid.value[5] }}</span>
+									<span class="duration">{{ vid.value[3] }}</span>
+								</div>
+								<img src="images/play-icon.png" class="play"/></a>
+							</div>
+								<a ng-href="/v/{{vid.value[0]}}"><p>{{vid.value[1]}}</p></a>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<span class = "pagination" ng-repeat="p in pages">
+							<a href = "/pages?p={{ p }}">{{ p }} &nbsp;&nbsp;</a>
+						</span>
+					</div>
+				</aside>
+
+
+				<aside class="width32 margin20_L">
+					<div class="rt-tpadd">
+						<!--Sizes=1 (width=300, height=250)-->
+						<script type="text/javascript" src="http://ads1.ministerial5.com/creative/2-002135402-00001j;size=1"></script>
+						<div class="most-popular">
+							<div class="most-popular-title">Latest Videos</div>
+								<div class="row" ng-repeat="lvid in latestVideos">
+									<span class="thumb"><a ng-href="/v/{{lvid.value[0]}}">
+									<img class = "resizeme" height = "126px" width="190px" ng-src="http://876490ded624fedbbf8f-2529efbed00bf302a12a4cac23251cd4.r64.cf2.rackcdn.com/{{lvid.value[2]}}" /><img src="images/play-icon.png" class="play"/></a>
+									<span>
+										<a ng-href="/v/{{lvid.value[0]}}"><p>{{lvid.value[1]}}</p></a>
+									</span>
+								</div>
+							</div>
+						</div>
+						<!--Sizes=5 (width=120, height=600)-->
+						<script type="text/javascript" src="http://ads1.ministerial5.com/creative/2-002135402-00001j;size=5"></script>
+					</div>
+				</aside>
+
+			</div>
+		</div>
+	</article>
+
+	<!--Footer Start-->
+	<footer>
+		<div class="container">
+			<div class="width35">
+				<h3><img src="/images/speak.png" /></h3>
+				<ul class="social">
+					<li><a href="http://www.facebook.com/speakglobally" target="_blank">Follow us on Facebook</a></li>
+					<li><a href="http://www.twitter.com/speakglobally" class="twitter" target="_blank">Follow us on Twitter</a></li>
+					<li><a href="https://plus.google.com/115581027232449935001/posts" class="google" target="_blank">Follow us on Google Plus</a></li>
+				</ul>
+			</div>
+			<div class="width20 devider">
+				<h3>Important Links</h3>
+				<ul>
+					<li><a href="/privacy">Privacy Policy</a></li>
+					<li><a href="/terms">Terms and Conditions</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<!--Footer End-->
+
+	<summary>Copyright &copy; 2013 Speak Globally. All rights reserved.</summary>
+	</script>
+
+	<script type="text/javascript">
+		(function() {
+			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+			po.src = 'https://apis.google.com/js/plusone.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		})();
+	</script>
+	<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-43119651-1', 'speakglobally.net');
+		  ga('send', 'pageview');
+	</script>
+	<script>
+		//Helper functiont to convert seconds to HH:MM:DD
+		function secondsToTime(secs)
+		{
+			var t = new Date(1970,0,1);
+			t.setSeconds(secs);
+			var s = t.toTimeString().substr(0,8);
+			if(secs > 86399)
+				s = Math.floor((t - Date.parse("1/1/70")) / 3600000) + s.substr(2);
+			return s;
+		}
+	</script>
+	<script>
+		window.hiro = {
+		externalID:"Ybrant-TinyLove-US",
+		subExternalID: "${PUBLISHER_ID}",
+		width: 636,
+		height: 359,
+		player: "videoplayer",
+		scale_start : 1,
+		scale_hover : 1,
+		scale_off_hover: 1,
+		lob_start: 0.8,
+		lob_hover: 0.8,
+		lob_off_hover: 0.8,
+		noPrerollUserInitiate : false,
+		userInitiate: false,
+		Flowplayer_License_key:"#$84ab5a759f8b4763580",
+		splashImg : 'http://videos.hiro.co.il/demo_clips/splash_image.png',
+		playImg : 'http://software.hiro.tv/User_initiate/play_large.png',
+		playList: [ {
+			url: '',
+			customProperties: {
+					  videoTitle : "",
+					  videoExternalId : "",
+					  videoDescription : "",
+					  videoKeyWords : "",
+					  videoTags : "",
+					  videoDurationSecs : ""
+					}
+			}]
+		};
+	</script>
+	<script src="http://tag.ybrant.hiro.tv/premium/scripts/hiro_dynamic_player.js?config=conf1"type="text/javascript"></script>
+</body>
+</html>

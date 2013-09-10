@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Speak Globally</title>
+        <script src="js/angular.min.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/jquery-1.9.1.js"></script>    
+    </head>
+    <body  ng-controller="FVideo" ng-cloak>
+        
+      <div ng-repeat="v in noneFeaturedVideos">
+          <span>
+              {{v.value[1]}}
+          </span>
+      </div>
+
+      
+     
+      <span ng-repeat="p in pages">
+        <a href = "/testng?page={{ p }}">{{ p }} &nbsp;&nbsp;</a>
+      </span>     
+
+        <!-- <div id="embedPath" >
+            <div id='videoplayer' class='hiro'></div>
+        </div> -->
+        
+
+    </body>
+  
+</html>
