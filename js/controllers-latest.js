@@ -1,7 +1,6 @@
-var app = angular.module('speakglobalApp', []);
+var app = angular.module('speakglobalApp', ['ui.bootstrap']);
 
 app.factory('speakglobalHomePageService', function ($http) {
-
 	return {
 		getVideosCount: function () {
 			//since $http.get returns a promise,
@@ -50,10 +49,8 @@ app.controller('SpeakglobalHome', function ($scope, speakglobalHomePageService, 
 			// Sample Output: {"rows":[{"key":null,"value":650}]}
 			$scope.numberOfPages = (Math.ceil(videoCountObj[0].value/$scope.videosPerPage)).toString();
 
-			$scope.pages = [];
-			for(var i = 1; i <= $scope.numberOfPages; i++){
-				$scope.pages.push(i);
-			}
+			// Pagination plugin
+			$scope.bigTotalItems = videoCountObj[0].value;
 		}
 	});
 
@@ -66,6 +63,10 @@ app.controller('SpeakglobalHome', function ($scope, speakglobalHomePageService, 
 		skipValue = parseInt(($scope.currentPageNumber - 1) * $scope.videosPerPage, 10);
 	}
 	$scope.noneFeaturedVideos = speakglobalHomePageService.getNoneFeaturedVideos($scope.videosPerPage, skipValue);
+
+	// Pagination plugin
+	$scope.bigCurrentPage = $scope.currentPageNumber;
+	$scope.maxSize = 6; // Max number of pages to be displayed at a time
 
 	// Get the top 5 Latest Videos List
 	$scope.latestVideos = speakglobalHomePageService.getLatestVideos();
@@ -86,5 +87,12 @@ app.controller('SpeakglobalHome', function ($scope, speakglobalHomePageService, 
 			$window.hiro.playList[0].customProperties.videoDurationSecs = homeVideoObj.value.duration;
 		}
 	});
+
+	// Pagination plugin
+	// This function is triggred when user tends to change the page using the plugin.
+	$scope.pageChanged = function(page) {
+		console.log('Current Page: ' + page);
+		location.replace('/sample.html?p=' + page);
+	};
 
 });

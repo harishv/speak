@@ -12,6 +12,8 @@
 	<script src="js/jquery.jqtransform.js"></script>
 	<script src="js/jquery.ae.image.resize.min.js"></script>
 	<script src="js/vast.plugin.js"></script>
+	<!-- Bootstrap UI CSS -->
+	<script src="js/ui-bootstrap-tpls-0.6.0.js"></script>
 	<script type="text/javascript">
 		$(function(){
 		  $('.checkbox').jqTransform({imgPath:'images/'});
@@ -95,9 +97,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<span class = "pagination" ng-repeat="p in pages">
-							<a href = "/pages?p={{ p }}">{{ p }} &nbsp;&nbsp;</a>
-						</span>
+						<pagination on-select-page="pageChanged(page)" items-per-page="videosPerPage" total-items="bigTotalItems" page="bigCurrentPage" max-size="maxSize" class="" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
 					</div>
 				</aside>
 
