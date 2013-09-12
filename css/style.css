@@ -33,7 +33,7 @@ header {background:url(../images/header.png) repeat-x 0 0; z-index:2; padding:20
 
 .searcharea {float:right;}
 .searcharea input[type="text"] {background:url(../images/searchbg.png) no-repeat 0 0; font-family: 'myriad-web-pro'; font-size:13px; color:#fff; float:left; width:170px; height:36px; border:none; padding-left:10px;}
-.search-btn {background: url(../images/searchbg.png) no-repeat right 0; float:left; width:77px; height:36px; border:none; text-indent:-9999em; line-height:0; font-size:0; cursor:pointer;}
+.search-btn {background:url(../images/searchbg.png) no-repeat right 0; float:left; width:77px; height:36px; border:none; text-indent:-9999em; line-height:0; font-size:0; cursor:pointer;}
 
 .searcharea .jqTransformSelectWrapper {
 	width:105px !important;

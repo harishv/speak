@@ -1,81 +1,31 @@
 <!DOCTYPE html>
-<html ng-app="speakglobalApp">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Speak Globally</title>
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <link href="css/jqtransform.css" rel="stylesheet" type="text/css" />
-  <script src="js/jquery-1.9.1.js"></script>
-  <script src="js/angular.min.js"></script>
-  <script src="js/controllers-latest.js"></script>
-  <script src="js/video.js"></script>
-  <script src="js/jquery.jqtransform.js"></script>
-  <script src="js/jquery.ae.image.resize.min.js"></script>
-  <script src="js/vast.plugin.js"></script>
-  <!-- Bootstrap UI CSS -->
-  <script src="js/ui-bootstrap-tpls-0.6.0.js"></script>
-  <script type="text/javascript">
-    $(function(){
-      $('.checkbox').jqTransform({imgPath:'images/'});
-    });
-  </script>
+<html ng-app>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Speak Globally</title>
+        <script src="js/angular.min.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/jquery-1.9.1.js"></script>    
     </head>
-    <body ng-cloak>
-
-      <div class="featured-videos-ad-area" id="featured-videos-ad-area" >
-         <div id='videoplayer' class='hiro' ng-controller="SpeakglobalSingleVideo" ng-init="init('cd418ca9185c619a209e281ef4a1f2cd')"></div>  
-      </div>
-
-      <!-- <div ng-repeat="v in noneFeaturedVideos">
+    <body  ng-controller="FVideo" ng-cloak>
+        
+      <div ng-repeat="v in noneFeaturedVideos">
           <span>
               {{v.value[1]}}
           </span>
       </div>
 
-
-
+      
+     
       <span ng-repeat="p in pages">
         <a href = "/testng?page={{ p }}">{{ p }} &nbsp;&nbsp;</a>
-      </span> -->
+      </span>     
 
         <!-- <div id="embedPath" >
             <div id='videoplayer' class='hiro'></div>
         </div> -->
-
-
-          <script>
-            window.hiro = {
-            externalID:"Ybrant-TinyLove-US",
-            subExternalID: "${PUBLISHER_ID}",
-            width: 636,
-            height: 359,
-            player: "videoplayer",
-            scale_start : 1,
-            scale_hover : 1,
-            scale_off_hover: 1,
-            lob_start: 0.8,
-            lob_hover: 0.8,
-            lob_off_hover: 0.8,
-            noPrerollUserInitiate : false,
-            userInitiate: false,
-            Flowplayer_License_key:"#$84ab5a759f8b4763580",
-            splashImg : 'http://videos.hiro.co.il/demo_clips/splash_image.png',
-            playImg : 'http://software.hiro.tv/User_initiate/play_large.png',
-            playList: [ {
-              url: '',
-              customProperties: {
-                    videoTitle : "",
-                    videoExternalId : "",
-                    videoDescription : "",
-                    videoKeyWords : "",
-                    videoTags : "",
-                    videoDurationSecs : ""
-                  }
-              }]
-            };
-          </script>
-          <script src="http://tag.ybrant.hiro.tv/premium/scripts/hiro_dynamic_player.js?config=conf1"type="text/javascript"></script>
+        
 
     </body>
-
+  
 </html>
