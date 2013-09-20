@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html ng-app="speakglobalApp">
+  <head>
+    <meta charset="utf-8"/>
+
+    <title>Speak Globally</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=""/>
+    <meta name="keywords" content="speakglobally, speakglobal, speak, global, public, video clips, post, videoblog, community site, videos, clips, online news, america news, news america"/>
+    <link rel="shortcut icon" href="/images/favicon.ico"/>
+
+    <link href="/css/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="http://vjs.zencdn.net/4.1/video-js.css">
+
+    <script src="/js/jquery-1.9.1.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/controllers.js"></script>
+
+    <script src="http://vjs.zencdn.net/4.1/video.js"></script>
+
+    <!-- Bootstrap UI JS -->
+    <script src="/js/ui-bootstrap-tpls-0.6.0.js"></script>
+  </head>
+
+  <body ng-controller="SpeakglobalHome" ng-cloak>
+    <header>
+      <div class="container">
+        <span class="logo"><img src="/images/speak.png" alt="Speak Globally"/></span>
+      </div>
+      <span class="clearboth"></span>
+    </header>
+    <!--Header End-->
+    <!-- Navigation Start -->
+    <div class="navgation">
+      <div class="container">
+        <nav>
+          <a href="/" class="active">Home</a> <span class="separator"></span>
+          <a href="/about">About Us</a> <span class="separator"></span>
+          <a href="/contact">Contact Us</a>
+        </nav>
+        <div class="navright">
+          <span class="small-icons">
+            <a href="https://www.facebook.com/speakglobally"><img src="/images/fb.png" alt="Facebook"/></a>
+            <a href="https://twitter.com/speakglobally"><img src="/images/twitter.png" alt="Twitter"/></a>
+            <a href="https://plus.google.com/115581027232449935001/posts"><img src="/images/google.png" alt="Google+"/></a>
+          </span>
+        </div>
+      </div>
+      <span class="clearboth"></span>
+    </div>
+    <!-- Navgation End-->
+
+    <article>
+      <div class="container">
+         <div class="banner">
+          <!-- BEGIN JS TAG - speakglobally.net_728x90 < - DO NOT MODIFY -->
+          <script src="http://ib.adnxs.com/ttj?id=1736935&referrer=speakglobally.net"></script>
+          <!-- END TAG -->
+        </div>
+        <div class="contentarea">
+          <aside class="width65">
+            <div class="featured-videos">
+              <div class="featured-videos-title">FEATURED VIDEO</div>
+              <div class="featured-player-ad-container">
+                <div class="featured-videos-ad-area" id="featured-videos-ad-area" >
+                  <video id="my_video_1" class="video-js vjs-default-skin" controls
+                        preload="auto" width="636" height="359" poster="" data-setup='{}'
+                       src="http://91cefb89b61292d7a6a5-9b3e53ad93e76fa27450765a72dfcdf1.r61.cf2.rackcdn.com/{{video_path}}" type='video/mp4'>
+                       <source type="video/mp4" />
+                  </video>
+                </div>
+                <div class="featured-videos-player-area" id="featured-videos-player-area" >
+                </div>
+              </div>
+              <div class="featured-videos-bt">
+                <p>{{ description }}</p>
+                <div class="social-icons margin10_T">
+                  <div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://speakglobally.net"></div>
+                  <div>
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://speakglobally.net" data-text="Check this video" data-via="speakglobally">Tweet</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);} }(document, 'script', 'twitter-wjs');</script>
+                  </div>
+
+                </div>
+                <!--Sizes=6 (width=234, height=60)-->
+                <!-- <div class="width35 right"><script src="http://ads1.ministerial5.com/creative/2-002135402-00001j;size=6"></script></div> -->
+              </div>
+              <div class="row">
+                <!-- <span class="right">Rate <img src="images/liles.png" class="margin20_L"/></span> -->
+              </div>
+              <div class="gallery-module">
+                <div class="featured-videos-title">More Videos</div>
+                <div>
+                  <div class="gallery" ng-repeat="vid in noneFeaturedVideos">
+                    <div class="videothumb">
+                      <a ng-href="/v/{% verbatim %}{{vid.value[0]}}{% endverbatim %}">
+                        <img width="100%" ng-src="http://876490ded624fedbbf8f-2529efbed00bf302a12a4cac23251cd4.r64.cf2.rackcdn.com/{% verbatim %}{{vid.value[2]}}{% endverbatim %}" alt="{% verbatim %}{{vid.value[1]}}{% endverbatim %}"/>
+                        <div class="video-overlay">
+                          <span class="uploadedDate">{% verbatim %}{{vid.value[5]}}{% endverbatim %}</span>
+                          <span class="duration">{% verbatim %}{{vid.value[3]}}{% endverbatim %}</span>
+                        </div>
+                        <img class="play" src="images/play-icon.png" alt="Play"/>
+                      </a>
+                    </div>
+                    <a class="video-title" ng-href="/v/{% verbatim %}{{vid.value[0]}}{% endverbatim %}">{% verbatim %}{{vid.value[1]}}{% endverbatim %}</a>
+                  </div>
+                </div>
+              </div>
+              <span class="clearboth"></span>
+              <div class="row">
+                <pagination on-select-page="pageChanged(page)" items-per-page="videosPerPage" total-items="bigTotalItems" page="bigCurrentPage" max-size="maxSize" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+              </div>
+            </div>
+          </aside>
+          <aside class="width32 margin20_L">
+            <div class="rt-tpadd">
+              <div class="banner">
+                <!-- BEGIN JS TAG - speakglobally.net_300x250 < - DO NOT MODIFY -->
+                <script src="http://ib.adnxs.com/ttj?id=1736934&referrer=speakglobally.net"></script>
+                <!-- END TAG -->
+              </div>
+              <div class="most-popular margin20_T">
+                <div class="most-popular-title">Popular Videos</div>
+                <div class="row popular-video" ng-repeat="pvid in popularVideos">
+                  <div class="thumb">
+                    <a ng-href="/v/{% verbatim %}{{pvid.value[0]}}{% endverbatim %}">
+                      <img class="resizeme" width="100%" ng-src="http://876490ded624fedbbf8f-2529efbed00bf302a12a4cac23251cd4.r64.cf2.rackcdn.com/{% verbatim %}{{pvid.value[2]}}{% endverbatim %}" alt="{% verbatim %}{{pvid.value[1]}}{% endverbatim %}"/>
+                      <div class="big-video-overlay">
+                        <span class="uploadedDate">{% verbatim %}{{pvid.value[5]}}{% endverbatim %}</span>
+                        <span class="duration">{% verbatim %}{{pvid.value[3]}}{% endverbatim %}</span>
+                      </div>
+                      <img class="bigplay" src="images/play-icon.png" alt="Play"/>
+                    </a>
+                  </div>
+                  <a class="video-title" ng-href="/v/{% verbatim %}{{pvid.value[0]}}{% endverbatim %}">{% verbatim %}{{pvid.value[1]}}{% endverbatim %}</a>
+                </div>
+              </div>
+            </div>
+            <div class="banner">
+              <!-- BEGIN JS TAG - speakglobally.net_160x600 < - DO NOT MODIFY -->
+              <script src="http://ib.adnxs.com/ttj?id=1736941&referrer=speakglobally.net"></script>
+              <!-- END TAG -->
+            </div>
+          </aside>
+          <span class="clearboth"></span>
+          <div class="banner margin10_T">
+            <!-- BEGIN JS TAG - speakglobally.net_728x90 < - DO NOT MODIFY -->
+            <script src="http://ib.adnxs.com/ttj?id=1736935&referrer=speakglobally.net"></script>
+            <!-- END TAG -->
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!--Footer Start-->
+    <footer>
+      <div class="container">
+        <div class="width35">
+          <h3><img src="/images/speak.png" alt="Speak Globally"/></h3>
+          <ul class="social">
+            <li><a href="http://www.facebook.com/speakglobally" target="_blank">Follow us on Facebook</a></li>
+            <li><a href="http://www.twitter.com/speakglobally" class="twitter" target="_blank">Follow us on Twitter</a></li>
+            <li><a href="https://plus.google.com/115581027232449935001/posts" class="google" target="_blank">Follow us on Google Plus</a></li>
+          </ul>
+        </div>
+        <div class="width20 devider">
+          <h3>Important Links</h3>
+          <ul>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms and Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <!--Footer End-->
+
+    <summary>Copyright &copy; 2013 Speak Globally. All rights reserved.</summary>
+
+    <script>
+      (function() {
+        var po=document.createElement('script'); po.type='text/javascript'; po.async=true;
+        po.src='https://apis.google.com/js/plusone.js';
+        var s=document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-43119651-1', 'speakglobally.net');
+        ga('send', 'pageview');
+    </script>
+    <script>
+      //Helper functiont to convert seconds to HH:MM:DD
+      function secondsToTime(secs)
+      {
+        var t=new Date(1970,0,1);
+        t.setSeconds(secs);
+        var s=t.toTimeString().substr(0,8);
+        if(secs > 86399)
+          s=Math.floor((t - Date.parse("1/1/70")) / 3600000) + s.substr(2);
+        return s;
+      }
+    </script>
+  </body>
+</html>
